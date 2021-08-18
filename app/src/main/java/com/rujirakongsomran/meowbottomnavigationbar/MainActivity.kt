@@ -2,7 +2,9 @@ package com.rujirakongsomran.meowbottomnavigationbar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.AutoTransition
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.rujirakongsomran.meowbottomnavigationbar.databinding.ActivityMainBinding
 
@@ -26,48 +28,32 @@ class MainActivity : AppCompatActivity() {
         binding.mbn.setOnClickMenuListener {
             when (it.id) {
                 0 -> {
-                    Toast.makeText(
-                        applicationContext,
-                        "Home Fragment",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    replaceFragment(HomeFragment.newInstance())
                 }
                 1 -> {
-                    Toast.makeText(
-                        applicationContext,
-                        "Explore Fragment",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    replaceFragment(ExploreFragment.newInstance())
                 }
                 2 -> {
-                    Toast.makeText(
-                        applicationContext,
-                        "Chat Fragment",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    replaceFragment(ChatFragment.newInstance())
                 }
                 3 -> {
-                    Toast.makeText(
-                        applicationContext,
-                        "Notification Fragment",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    replaceFragment(NotificationFragment.newInstance())
                 }
                 4 -> {
-                    Toast.makeText(
-                        applicationContext,
-                        "User Fragment",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    replaceFragment(UserFragment.newInstance())
                 }
                 else -> {
-                    Toast.makeText(
-                        applicationContext,
-                        "Home Fragment",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    replaceFragment(HomeFragment.newInstance())
                 }
             }
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentTransition = supportFragmentManager.beginTransaction()
+
+        fragmentTransition
+            .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(Fragment::class.java.simpleName).commit()
     }
 }
