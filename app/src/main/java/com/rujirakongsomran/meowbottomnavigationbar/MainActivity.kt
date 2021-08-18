@@ -3,8 +3,8 @@ package com.rujirakongsomran.meowbottomnavigationbar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.rujirakongsomran.meowbottomnavigationbar.databinding.ActivityMainBinding
-import meow.bottomnavigation.MeowBottomNavigation
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.mbn.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
-        binding.mbn.add(MeowBottomNavigation.Model(0, R.drawable.ic_explore))
-        binding.mbn.add(MeowBottomNavigation.Model(0, R.drawable.ic_chat))
-        binding.mbn.add(MeowBottomNavigation.Model(0, R.drawable.ic_notifications))
-        binding.mbn.add(MeowBottomNavigation.Model(0, R.drawable.ic_user))
+        binding.mbn.add(MeowBottomNavigation.Model(1, R.drawable.ic_explore))
+        binding.mbn.add(MeowBottomNavigation.Model(2, R.drawable.ic_chat))
+        binding.mbn.add(MeowBottomNavigation.Model(3, R.drawable.ic_notifications))
+        binding.mbn.add(MeowBottomNavigation.Model(4, R.drawable.ic_user))
 
         binding.mbn.setOnClickMenuListener {
             when (it.id) {
