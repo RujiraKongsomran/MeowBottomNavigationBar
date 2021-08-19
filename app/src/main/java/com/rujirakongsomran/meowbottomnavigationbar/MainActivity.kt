@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        addFragment(HomeFragment.newInstance())
+        binding.mbn.show(0)
         binding.mbn.add(MeowBottomNavigation.Model(0, R.drawable.ic_home))
         binding.mbn.add(MeowBottomNavigation.Model(1, R.drawable.ic_explore))
         binding.mbn.add(MeowBottomNavigation.Model(2, R.drawable.ic_chat))
@@ -54,6 +56,12 @@ class MainActivity : AppCompatActivity() {
 
         fragmentTransition
             .replace(R.id.fragmentContainer, fragment)
+            .addToBackStack(Fragment::class.java.simpleName).commit()
+    }
+
+    private fun addFragment(fragment: Fragment) {
+        val fragmentTransition = supportFragmentManager.beginTransaction()
+        fragmentTransition.add(R.id.fragmentContainer, fragment)
             .addToBackStack(Fragment::class.java.simpleName).commit()
     }
 }
